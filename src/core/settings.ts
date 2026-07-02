@@ -19,7 +19,7 @@ export interface OSSettings {
 const DEFAULTS: OSSettings = {
   theme: 'dark',
   accent: '#6d8dff',
-  wallpaper: { type: 'preset', id: 'aurora' },
+  wallpaper: { type: 'image', value: '/wallpaper-brand.svg' },
   username: 'hbouzourdaz',
   hostname: 'hakimos',
   sounds: true,

@@ -9,6 +9,7 @@ import { promptDialog, confirmDialog } from './dialogs';
 import { icons } from '../icons';
 
 export const WALLPAPERS: Array<{ id: string; name: string }> = [
+  { id: 'brand', name: 'HakimOS' },
   { id: 'aurora', name: 'Aurora' },
   { id: 'dusk', name: 'Dusk' },
   { id: 'ocean', name: 'Ocean' },
@@ -29,11 +30,15 @@ export function applyWallpaper(wp: Wallpaper = settings.get('wallpaper')) {
   wallEl.style.background = '';
   wallEl.style.backgroundSize = '';
   if (wp.type === 'preset') {
-    wallEl.classList.add(`wp-${wp.id}`);
+    if (wp.id === 'brand') {
+      wallEl.style.background = `url('/wallpaper-brand.svg') center / cover no-repeat, #0a0d18`;
+    } else {
+      wallEl.classList.add(`wp-${wp.id}`);
+    }
   } else if (wp.type === 'color') {
     wallEl.style.background = wp.value;
   } else {
-    const url = wp.value.startsWith('data:')
+    const url = wp.value.startsWith('data:') || wp.value.startsWith('/')
       ? wp.value
       : 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(wp.value);
     wallEl.style.background = `url("${url}") center / cover no-repeat, #0b0e14`;
@@ -49,6 +54,19 @@ function renderIcons() {
   iconsEl.innerHTML = '';
   let entries: ReturnType<typeof vfs.list> = [];
   try { entries = vfs.list(desktopDir()); } catch { return; }
+
+  const SYSTEM_APPS = ['terminal', 'files', 'browser', 'portfolio', 'about', 'settings', 'calculator', 'paint', 'monitor', 'editor', 'minesweeper', 'snake', 'piano', 'welcome'];
+  entries.sort((a, b) => {
+    const aIsApp = a.name.endsWith('.app');
+    const bIsApp = b.name.endsWith('.app');
+    const aIsSystem = aIsApp && a.node.type === 'file' && SYSTEM_APPS.includes(a.node.content.trim());
+    const bIsSystem = bIsApp && b.node.type === 'file' && SYSTEM_APPS.includes(b.node.content.trim());
+    if (aIsSystem && !bIsSystem) return -1;
+    if (!aIsSystem && bIsSystem) return 1;
+    if (aIsApp && !bIsApp) return -1;
+    if (!aIsApp && bIsApp) return 1;
+    return a.name.localeCompare(b.name);
+  });
 
   for (const { name, node } of entries) {
     const full = Path.join(desktopDir(), name);

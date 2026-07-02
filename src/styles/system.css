@@ -147,6 +147,9 @@
     radial-gradient(700px 500px at 15% 85%, rgba(56, 189, 248, 0.35), transparent 55%),
     linear-gradient(180deg, #111827, #0b1020);
 }
+.wp-brand {
+  background: url('/wallpaper-brand.svg') center / cover no-repeat, #0a0d18;
+}
 
 .desk-icons {
   position: absolute;
@@ -721,3 +724,76 @@ body.wm-dragging { user-select: none; }
   flex: none;
 }
 .toast-close:hover { background: var(--surface-3); color: var(--text); }
+
+/* ============================== responsive */
+
+@media (max-width: 640px) {
+  .desk-icons {
+    grid-template-columns: repeat(auto-fill, 76px);
+    grid-template-rows: repeat(auto-fill, 84px);
+  }
+  .desk-icon { width: 76px; height: 84px; padding: 8px 2px 4px; }
+  .di-img { width: 36px; height: 36px; }
+  .di-label { font-size: 11px; }
+
+  .window { min-width: 180px; min-height: 120px; }
+  .titlebar { height: 34px; padding: 0 4px 0 8px; gap: 6px; }
+  .win-icon { width: 14px; height: 14px; }
+  .win-title { font-size: 12px; }
+  .win-btn { width: 28px; height: 24px; padding: 5px 7px; border-radius: 5px; }
+
+  .taskbar { gap: 3px; padding: 0 4px; }
+  .start-btn { width: 36px; height: 36px; padding: 6px; }
+  .task-btn { height: 34px; padding: 0 8px; max-width: 120px; border-radius: 7px; }
+  .tb-icon { width: 16px; height: 16px; }
+  .tb-label { font-size: 11px; }
+  .tray-btn { width: 28px; height: 28px; padding: 6px; }
+  .clock { padding: 2px 6px; }
+  .clock-time { font-size: 12px; }
+  .clock-date { font-size: 9.5px; }
+  .show-desktop { width: 6px; }
+
+  .start-menu {
+    left: 4px;
+    right: 4px;
+    width: auto;
+    max-width: none;
+    bottom: var(--taskbar-h);
+    border-radius: 12px 12px 0 0;
+    max-height: min(70vh, calc(100vh - var(--taskbar-h)));
+  }
+  .sm-grid { grid-template-columns: repeat(3, 1fr); }
+  .sm-tile { padding: 10px 4px 8px; }
+  .sm-tile-icon { width: 30px; height: 30px; }
+  .sm-tile-label { font-size: 11px; }
+  .sm-scroll { padding: 6px 10px; }
+
+  .lock-time { font-size: 56px; }
+  .lock-date { font-size: 15px; }
+  .lock-user { margin-top: 40px; }
+  .lock-avatar, .sm-avatar { width: 52px; height: 52px; font-size: 22px; }
+  .boot-logo { width: 64px; height: 64px; }
+  .boot-name { font-size: 20px; }
+  .boot-bar { width: 200px; }
+  .boot-log { width: 90vw; height: 120px; font-size: 11px; }
+
+  .dlg { width: min(340px, calc(100vw - 24px)); padding: 16px; border-radius: 12px; }
+  .dlg-title { font-size: 14px; }
+  .dlg-picker { width: min(360px, calc(100vw - 24px)); }
+  .picker-list { height: 200px; }
+
+  .ctx-menu { min-width: 170px; padding: 4px; }
+  .ctx-item { padding: 6px 8px; font-size: 12px; }
+
+  .toasts { width: calc(100vw - 20px); right: 10px; top: 10px; }
+  .toast { padding: 10px 12px; border-radius: 10px; }
+
+  .calendar-pop { right: 4px; width: min(260px, calc(100vw - 8px)); bottom: calc(var(--taskbar-h) + 4px); }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .desk-icons { grid-template-columns: repeat(auto-fill, 84px); grid-template-rows: repeat(auto-fill, 92px); }
+  .desk-icon { width: 84px; height: 92px; }
+  .sm-grid { grid-template-columns: repeat(4, 1fr); }
+  .start-menu { width: 460px; }
+}

@@ -1097,3 +1097,117 @@
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ============================== responsive */
+
+@media (max-width: 640px) {
+  .terminal { padding: 8px; font-size: 12px; }
+
+  .fm-sidebar { width: 0; padding: 0; border: none; overflow: hidden; }
+  .fm-crumbs { margin: 0 4px; padding: 3px 6px; font-size: 11px; }
+  .fm-entries.grid { grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 2px; }
+  .fm-entries { padding: 8px; }
+  .fm-entry-icon { width: 32px; height: 32px; }
+  .fm-entry-name { font-size: 11px; }
+  .fm-status { padding: 4px 8px; font-size: 11px; }
+
+  .ed-gutter { width: 32px; padding: 8px 4px 8px 0; font-size: 12px; }
+  .ed-text { padding: 8px 10px; font-size: 12px; }
+  .ed-preview { padding: 12px 16px; }
+  .ed-status { padding: 4px 10px; font-size: 11px; }
+
+  .br-bar { padding: 5px 6px; gap: 2px; }
+  .br-url { padding: 5px 10px; font-size: 12px; margin-left: 3px; }
+  .br-bookmarks { padding: 3px 6px; }
+  .br-bm { padding: 3px 8px; font-size: 11px; }
+
+  .set { flex-direction: column; }
+  .set-nav {
+    width: 100%; flex-direction: row; border-right: none;
+    border-bottom: 1px solid var(--border); padding: 6px 8px;
+    overflow-x: auto; gap: 2px; scrollbar-width: none;
+  }
+  .set-nav::-webkit-scrollbar { display: none; }
+  .set-nav-btn { padding: 6px 10px; font-size: 12px; white-space: nowrap; }
+  .set-content { padding: 14px; }
+  .set-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .set-row label { min-width: 0; }
+  .set-theme-row { flex-wrap: wrap; gap: 8px; }
+  .theme-card-preview { width: 90px; height: 56px; }
+  .set-wall-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .wall-chip { height: 48px; }
+
+  .calc { padding: 10px; gap: 8px; }
+  .calc-result { font-size: 24px; }
+  .calc-btn { height: 40px; font-size: 15px; border-radius: 8px; }
+  .calc-pad { gap: 5px; }
+
+  .paint-tools { padding: 5px 6px; gap: 2px; }
+  .paint-size { width: 60px; }
+  .swatch { width: 16px; height: 16px; }
+  .paint-stage { padding: 8px; }
+
+  .piano-controls { padding: 6px 10px; font-size: 12px; }
+  .piano-board { padding: 8px; }
+
+  .ms { padding: 8px; gap: 6px; }
+  .ms-cell { width: 22px; height: 22px; font-size: 12px; }
+  .ms-hud { padding: 6px 10px; gap: 10px; }
+  .ms-counter { font-size: 16px; padding: 1px 6px; }
+  .ms-face { width: 36px; height: 36px; }
+
+  .mon { padding: 8px; gap: 8px; }
+  .mon-charts { flex-wrap: wrap; gap: 6px; }
+  .mon-chart { min-width: calc(50% - 6px); }
+  .mon-stats { flex-wrap: wrap; gap: 10px; }
+
+  .snake-hud { padding: 8px 12px; font-size: 12px; }
+
+  .viewer-toolbar { padding: 5px 6px; }
+
+  .welcome { padding: 16px; }
+  .wel-hero { flex-direction: column; text-align: center; gap: 12px; }
+  .wel-logo { width: 56px; height: 56px; }
+  .wel-hero h1 { font-size: 18px; }
+  .wel-card { padding: 10px; gap: 10px; }
+  .wel-card-icon { width: 28px; height: 28px; }
+
+  .portfolio-content { padding: 14px; gap: 12px; }
+  .portfolio-avatar { width: 56px; height: 56px; font-size: 24px; }
+  .portfolio-name { font-size: 17px; }
+  .portfolio-stats { gap: 6px; }
+  .portfolio-stat { padding: 8px 4px; border-radius: 10px; }
+  .portfolio-stat-value { font-size: 15px; }
+  .portfolio-link { padding: 10px; border-radius: 12px; gap: 10px; }
+  .portfolio-link-icon { width: 36px; height: 36px; border-radius: 10px; font-size: 16px; }
+  .portfolio-link-title { font-size: 13px; }
+  .portfolio-link-desc { font-size: 11px; }
+  .portfolio-tab { padding: 6px 10px; font-size: 12px; }
+  .portfolio-tabs { gap: 4px; }
+
+  .about-content { padding: 14px; }
+  .about-avatar { width: 60px; height: 60px; font-size: 28px; }
+  .about-name { font-size: 20px; }
+  .about-stats { gap: 8px; }
+  .about-stat { padding: 10px 8px; border-radius: 12px; }
+  .about-stat-value { font-size: 20px; }
+  .about-project { padding: 10px 12px; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .about-project-name { min-width: 0; }
+  .about-cv-projects { grid-template-columns: 1fr; }
+  .about-nav { padding: 8px 10px; gap: 4px; }
+  .about-nav-btn { padding: 6px 12px; font-size: 12px; }
+
+  .about-hero { flex-direction: column; text-align: center; gap: 12px; padding: 14px; }
+  .about-logo { width: 48px; height: 48px; }
+  .about-name { font-size: 20px; }
+  .about-table { font-size: 12px; }
+  .about-table td { padding: 5px 8px; }
+  .about-table td:first-child { width: 110px; }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .fm-sidebar { width: 140px; }
+  .set-nav { width: 160px; }
+  .mon-charts { flex-wrap: wrap; }
+  .mon-chart { min-width: calc(50% - 8px); }
+}

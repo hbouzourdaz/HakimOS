@@ -72,7 +72,7 @@ export function lockScreen() {
   const screen = h('div', { class: 'lock-screen' },
     h('div', { class: 'lock-clock' }, time, date),
     h('div', { class: 'lock-user' },
-      h('img', { class: 'lock-avatar', src: '/avatar.png', alt: 'Hakim' }),
+      h('img', { class: 'lock-avatar', src: '/avatar.svg', alt: 'Hakim BOUZOURDAZ' }),
       h('div', { class: 'lock-name' }, 'Hakim Bouzourdaz'),
       h('div', { class: 'lock-host' }, settings.get('hostname')),
       h('div', { class: 'lock-hint' }, 'Click anywhere or press any key to unlock'),

@@ -79,7 +79,7 @@ function launchAbout(ctx: AppContext) {
   function renderProfile() {
     return h('div', { class: 'about-section' },
       h('div', { class: 'about-profile-header centered' },
-        h('img', { class: 'about-avatar', src: '/avatar.png', alt: 'Hakim' }),
+        h('img', { class: 'about-avatar', src: '/avatar.svg', alt: 'Hakim BOUZOURDAZ' }),
         h('h1', { class: 'about-name' }, t('name')),
         h('p', { class: 'about-handle' }, '@hbouzourdaz'),
       ),

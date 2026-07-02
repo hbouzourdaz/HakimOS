@@ -47,13 +47,14 @@ export class OSWindow {
     this.onBeforeClose = opts.onBeforeClose;
 
     const vw = window.innerWidth, vh = window.innerHeight - TASKBAR_H;
-    const w = clamp(opts.width ?? 720, 240, vw - 16);
-    const hgt = clamp(opts.height ?? 480, 160, vh - 16);
+    const isMobile = vw <= 640;
+    const w = isMobile ? vw : clamp(opts.width ?? 720, 240, vw - 16);
+    const hgt = isMobile ? vh : clamp(opts.height ?? 480, 160, vh - 16);
     const cx = 60 + (cascade % 8) * 32;
     const cy = 40 + (cascade % 8) * 26;
     cascade++;
-    const x = opts.x ?? clamp(Math.round((vw - w) / 2) + (cx - 160), 8, Math.max(8, vw - w - 8));
-    const y = opts.y ?? clamp(cy, 8, Math.max(8, vh - hgt - 8));
+    const x = isMobile ? 0 : opts.x ?? clamp(Math.round((vw - w) / 2) + (cx - 160), 8, Math.max(8, vw - w - 8));
+    const y = isMobile ? 0 : opts.y ?? clamp(cy, 8, Math.max(8, vh - hgt - 8));
     this.bounds = { x, y, w, h: hgt };
 
     this.titleEl = h('span', { class: 'win-title' }, this.title);
@@ -79,7 +80,7 @@ export class OSWindow {
     this.applyBounds();
     this.el.style.zIndex = String(++zCounter);
 
-    if (opts.resizable !== false) {
+    if (opts.resizable !== false && !isMobile) {
       for (const dirn of ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw']) {
         const handle = h('div', { class: `rs rs-${dirn}` });
         this.attachResize(handle, dirn, opts.minWidth ?? 280, opts.minHeight ?? 160);
@@ -92,6 +93,7 @@ export class OSWindow {
     this.attachDrag(titlebar);
     this.el.addEventListener('pointerdown', () => this.focus(), { capture: true });
     requestAnimationFrame(() => requestAnimationFrame(() => this.el.classList.remove('opening')));
+    if (isMobile) requestAnimationFrame(() => this.maximize());
   }
 
   private applyBounds() {

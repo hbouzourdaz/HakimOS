@@ -363,7 +363,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
 };
 
-let currentLang: Lang = 'kab';
+let currentLang: Lang = 'en';
 
 export function setLang(lang: Lang) {
   currentLang = lang;

@@ -123,7 +123,7 @@ function launchPortfolio(ctx: AppContext) {
 
     // Profile header (centered)
     const profile = h('div', { class: 'portfolio-profile centered' },
-      h('img', { class: 'portfolio-avatar', src: '/avatar.svg', alt: 'Hakim BOUZOURDAZ' }),
+      h('img', { class: 'portfolio-avatar', src: '/avatar.png', alt: 'Hakim BOUZOURDAZ' }),
       h('h1', { class: 'portfolio-name' }, t('name')),
       h('p', { class: 'portfolio-handle' }, '@hbouzourdaz'),
       h('p', { class: 'portfolio-bio' }, t('bio')),

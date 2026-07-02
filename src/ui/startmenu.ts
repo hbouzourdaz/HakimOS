@@ -107,7 +107,7 @@ function openStartMenu() {
 
   const footer = h('div', { class: 'sm-footer' },
     h('div', { class: 'sm-user' },
-      h('img', { class: 'sm-avatar', src: '/avatar.svg', alt: 'Hakim' }),
+      h('img', { class: 'sm-avatar', src: '/avatar.png', alt: 'Hakim' }),
       h('span', null, settings.get('username')),
     ),
     h('div', { class: 'sm-power' },
